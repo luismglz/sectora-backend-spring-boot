@@ -29,4 +29,10 @@ public class BranchController {
         return branchService.updateBranch(id, branch);
     }
 
+    @DeleteMapping("/{id}")
+    public String deleteBranch(@PathVariable Long id){
+        branchService.deleteBranch(id);
+        return "Branch has been deleted successfully";
+    }
+
 }
