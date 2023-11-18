@@ -24,4 +24,9 @@ public class BranchController {
         return branchService.saveBranch(branch);
     }
 
+    @PutMapping("/{id}")
+    public Branch updateBranch(@PathVariable Long id, @RequestBody Branch branch){
+        return branchService.updateBranch(id, branch);
+    }
+
 }
