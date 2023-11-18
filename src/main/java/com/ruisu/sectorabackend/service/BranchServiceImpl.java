@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 @Service
 public class BranchServiceImpl implements BranchService {
@@ -48,5 +49,10 @@ public class BranchServiceImpl implements BranchService {
     @Override
     public void deleteBranch(Long id) {
         branchRepository.deleteById(id);
+    }
+
+    @Override
+    public Optional<Branch> findBranchByName(String name) {
+        return branchRepository.findBranchByName(name);
     }
 }

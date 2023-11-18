@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping(path = "/api/v1/branches")
@@ -17,6 +18,11 @@ public class BranchController {
     @GetMapping()
     public List<Branch> findAllBranches(){
         return branchService.findAllBranches();
+    }
+
+    @GetMapping(params = "name",path = "/{name}")
+    public Optional<Branch> findBranchByName(@PathVariable Optional<String> name){
+        return branchService.findBranchByName(name.get());
     }
 
     @PostMapping()
