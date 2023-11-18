@@ -20,5 +20,4 @@ public class Branch {
     private String name;
     private String telephone;
     private String address;
-    private String location;
 }

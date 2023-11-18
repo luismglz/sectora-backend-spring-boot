@@ -7,4 +7,7 @@ import java.util.List;
 
 public interface BranchService {
     List<Branch> findAllBranches();
+    Branch saveBranch(Branch branch);
+    Branch updateBranch(Long id, Branch branch);
+    void deleteBranch(Long id);
 }
