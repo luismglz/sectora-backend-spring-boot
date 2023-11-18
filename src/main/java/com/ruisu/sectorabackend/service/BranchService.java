@@ -11,5 +11,7 @@ public interface BranchService {
     Branch saveBranch(Branch branch);
     Branch updateBranch(Long id, Branch branch);
     void deleteBranch(Long id);
-    Optional<Branch> findBranchByName(String name);
+    Optional<Branch> findBranchByNameWithJPQL(String name);
+    Optional<Branch> findByName(String name);
+    Optional<Branch> findByNameIgnoreCase(String name);
 }

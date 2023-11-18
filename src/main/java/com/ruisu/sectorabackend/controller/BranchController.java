@@ -20,9 +20,19 @@ public class BranchController {
         return branchService.findAllBranches();
     }
 
-    @GetMapping(params = "name",path = "/{name}")
-    public Optional<Branch> findBranchByName(@PathVariable Optional<String> name){
-        return branchService.findBranchByName(name.get());
+    @GetMapping(path = "/jpql/{name}")
+    public Optional<Branch> findBranchByNameWithJPQL(@PathVariable String name){
+        return branchService.findBranchByNameWithJPQL(name);
+    }
+
+    @GetMapping(path = "/{name}", params = "name")
+    public Optional<Branch> findByName(@PathVariable String name){
+        return branchService.findByName(name);
+    }
+
+    @GetMapping(path = "/ignoreCase/{name}")
+    public Optional<Branch> findByNameIgnoreCase(@PathVariable String name){
+        return branchService.findByNameIgnoreCase(name);
     }
 
     @PostMapping()

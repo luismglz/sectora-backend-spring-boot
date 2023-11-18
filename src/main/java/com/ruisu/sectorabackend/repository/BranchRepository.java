@@ -8,9 +8,15 @@ import java.util.Optional;
 
 public interface BranchRepository extends JpaRepository<Branch, Long> {
 
-    //JPQL (Java Persistance Query Language) is used to make the query
 
+    //JPQL (Java Persistance Query Language) is used to make the query
     @Query("SELECT b FROM Branch b WHERE b.name = :name")
-    Optional<Branch> findBranchByName(String name);
+    Optional<Branch> findBranchByNameWithJPQL(String name);
+
+    //Inversion of Control (IoC)
+    Optional<Branch> findByName(String name);
+
+    Optional<Branch> findByNameIgnoreCase(String name);
+
 
 }

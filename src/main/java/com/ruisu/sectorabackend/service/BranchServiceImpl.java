@@ -52,7 +52,24 @@ public class BranchServiceImpl implements BranchService {
     }
 
     @Override
-    public Optional<Branch> findBranchByName(String name) {
-        return branchRepository.findBranchByName(name);
+    public Optional<Branch> findBranchByNameWithJPQL(String name) {
+        return branchRepository.findBranchByNameWithJPQL(name);
+    }
+
+    @Override
+    public Optional<Branch> findByName(String name) {
+
+        Optional<Branch> branch = branchRepository.findByName(name);
+
+        return branch.isPresent()
+                ? branch : Optional.empty();
+    }
+
+    @Override
+    public Optional<Branch> findByNameIgnoreCase(String name) {
+        Optional<Branch> branch = branchRepository.findByNameIgnoreCase(name);
+
+        return branch.isPresent()
+                ? branch : Optional.empty();
     }
 }
