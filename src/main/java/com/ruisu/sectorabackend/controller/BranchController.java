@@ -3,6 +3,7 @@ package com.ruisu.sectorabackend.controller;
 import com.ruisu.sectorabackend.entity.Branch;
 import com.ruisu.sectorabackend.error.BranchNotFoundException;
 import com.ruisu.sectorabackend.service.BranchService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -42,7 +43,7 @@ public class BranchController {
     }
 
     @PostMapping()
-    public Branch saveBranch(@RequestBody Branch branch){
+    public Branch saveBranch(@Valid @RequestBody Branch branch){
         return branchService.saveBranch(branch);
     }
 
