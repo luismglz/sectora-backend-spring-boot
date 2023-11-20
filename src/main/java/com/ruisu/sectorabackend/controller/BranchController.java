@@ -35,6 +35,11 @@ public class BranchController {
         return branchService.findByNameIgnoreCase(name);
     }
 
+    @GetMapping(path = "/{id}")
+    public Branch findBranchById(@PathVariable Long id){
+        return branchService.findById(id);
+    }
+
     @PostMapping()
     public Branch saveBranch(@RequestBody Branch branch){
         return branchService.saveBranch(branch);

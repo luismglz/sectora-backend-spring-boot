@@ -72,4 +72,10 @@ public class BranchServiceImpl implements BranchService {
         return branch.isPresent()
                 ? branch : Optional.empty();
     }
+
+    @Override
+    public Branch findById(Long id) {
+
+        return branchRepository.findById(id).get();
+    }
 }

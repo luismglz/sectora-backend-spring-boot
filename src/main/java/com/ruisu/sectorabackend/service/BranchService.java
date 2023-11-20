@@ -14,4 +14,5 @@ public interface BranchService {
     Optional<Branch> findBranchByNameWithJPQL(String name);
     Optional<Branch> findByName(String name);
     Optional<Branch> findByNameIgnoreCase(String name);
+    Branch findById(Long id);
 }
