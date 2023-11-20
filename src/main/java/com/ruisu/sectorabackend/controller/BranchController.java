@@ -1,6 +1,7 @@
 package com.ruisu.sectorabackend.controller;
 
 import com.ruisu.sectorabackend.entity.Branch;
+import com.ruisu.sectorabackend.error.BranchNotFoundException;
 import com.ruisu.sectorabackend.service.BranchService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -36,7 +37,7 @@ public class BranchController {
     }
 
     @GetMapping(path = "/{id}")
-    public Branch findBranchById(@PathVariable Long id){
+    public Branch findBranchById(@PathVariable Long id) throws BranchNotFoundException {
         return branchService.findById(id);
     }
 

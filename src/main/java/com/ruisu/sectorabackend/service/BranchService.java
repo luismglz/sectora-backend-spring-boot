@@ -1,6 +1,7 @@
 package com.ruisu.sectorabackend.service;
 
 import com.ruisu.sectorabackend.entity.Branch;
+import com.ruisu.sectorabackend.error.BranchNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,5 +15,5 @@ public interface BranchService {
     Optional<Branch> findBranchByNameWithJPQL(String name);
     Optional<Branch> findByName(String name);
     Optional<Branch> findByNameIgnoreCase(String name);
-    Branch findById(Long id);
+    Branch findById(Long id) throws BranchNotFoundException;
 }

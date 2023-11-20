@@ -2,6 +2,7 @@ package com.ruisu.sectorabackend.service;
 
 
 import com.ruisu.sectorabackend.entity.Branch;
+import com.ruisu.sectorabackend.error.BranchNotFoundException;
 import com.ruisu.sectorabackend.repository.BranchRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -74,8 +75,14 @@ public class BranchServiceImpl implements BranchService {
     }
 
     @Override
-    public Branch findById(Long id) {
+    public Branch findById(Long id) throws BranchNotFoundException {
 
-        return branchRepository.findById(id).get();
+        Optional<Branch> branch = branchRepository.findById(id);
+
+        if(!branch.isPresent()){
+            throw new BranchNotFoundException("Branch was not found");
+        }
+
+        return branch.get();
     }
 }
