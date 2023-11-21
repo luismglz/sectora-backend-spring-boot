@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.ruisu</groupId>
 	<artifactId>sectora-backend</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<name>sectora-backend</name>
 	<description>Store information management system by branch offices</description>
 	<properties>

@@ -1,5 +1,13 @@
+server:
+  port: ${SERVER_PORT}
+spring:
+  profiles:
+    active: dev
+---
 spring:
   config:
+    activate:
+      on-profile: dev
     import: file:.env.properties
   #h2:
     #console:
@@ -19,5 +27,53 @@ spring:
   sql:
     init:
       platform: ${SPRING_SQL_INIT_PLATFORM}
-server:
-  port: ${SERVER_PORT}
+---
+spring:
+  config:
+    activate:
+      on-profile: qa
+    import: file:.env.properties
+      #h2:
+      #console:
+    #enabled: true
+  datasource:
+    url: ${SPRING_DATASOURCE_URL_QA}
+    #driver-class-name: ${SPRING_DATASOURCE_DRIVER_CLASS_NAME}
+    username: ${SPRING_DATASOURCE_USERNAME}
+    password: ${SPRING_DATASOURCE_PASSWORD}
+  jpa:
+    #database-platform: ${SPRING_JPA_DATABASE_PLATFORM}
+    database: ${SPRING_JPA_DATABASE}
+    show-sql: ${SPRING_JPA_SHOW_SQL}
+    generate-ddl: ${SPRING_JPA_GENERATE_DDL} #generate tables
+    hibernate:
+      ddl-auto: ${SPRING_JPA_HIBERNATE_DDL_AUTO} # update tables structure
+  sql:
+    init:
+      platform: ${SPRING_SQL_INIT_PLATFORM}
+---
+spring:
+  config:
+    activate:
+      on-profile: prod
+    import: file:.env.properties
+      #h2:
+    #console:
+    #enabled: true
+  datasource:
+    url: ${SPRING_DATASOURCE_URL_PROD}
+    #driver-class-name: ${SPRING_DATASOURCE_DRIVER_CLASS_NAME}
+    username: ${SPRING_DATASOURCE_USERNAME}
+    password: ${SPRING_DATASOURCE_PASSWORD}
+  jpa:
+    #database-platform: ${SPRING_JPA_DATABASE_PLATFORM}
+    database: ${SPRING_JPA_DATABASE}
+    show-sql: ${SPRING_JPA_SHOW_SQL}
+    generate-ddl: ${SPRING_JPA_GENERATE_DDL} #generate tables
+    hibernate:
+      ddl-auto: ${SPRING_JPA_HIBERNATE_DDL_AUTO} # update tables structure
+  sql:
+    init:
+      platform: ${SPRING_SQL_INIT_PLATFORM}
+
+
