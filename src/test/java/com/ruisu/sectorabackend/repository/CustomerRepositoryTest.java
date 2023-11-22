@@ -61,4 +61,22 @@ class CustomerRepositoryTest {
         System.out.println("customerList = "+customerList);
     }
 
+
+    @Test
+    public void findAllCustomersFirstNameContaining(){
+        List<Customer> customerList = customerRepository.findByFirstNameContaining("ai");
+        System.out.println(customerList);
+    }
+
+    @Test
+    public void findAllCustomersLastNameNotNull(){
+        List<Customer> customerList = customerRepository.findByLastNameNotNull();
+        System.out.println(customerList);
+    }
+
+    @Test
+    public void findAllCustomersByAddressCity(){
+        List<Customer> customerList = customerRepository.findByAddress_City("New York City");
+        System.out.println(customerList);
+    }
 }
