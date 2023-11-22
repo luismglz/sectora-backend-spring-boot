@@ -39,4 +39,11 @@ public class Customer {
             nullable = false
     )
     private String email;
+
+   /* private String city;
+    private String secondaryStreet;*/
+
+    @Embedded
+    private Address address;
+
 }
