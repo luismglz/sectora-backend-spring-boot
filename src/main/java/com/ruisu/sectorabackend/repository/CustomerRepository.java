@@ -2,8 +2,10 @@ package com.ruisu.sectorabackend.repository;
 
 import com.ruisu.sectorabackend.entity.Customer;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -35,4 +37,12 @@ public interface CustomerRepository extends JpaRepository<Customer, Long> {
             nativeQuery = true
     )
     Customer getCustomerByEmailNativeAndNamedParams(String email);
+
+    @Transactional
+    @Modifying
+    @Query(
+            value = "UPDATE customer SET first_name = ?1 WHERE email = ?2",
+            nativeQuery = true
+    )
+    void updateCustomerFirstNameByEmail(String firstName, String email);
 }
