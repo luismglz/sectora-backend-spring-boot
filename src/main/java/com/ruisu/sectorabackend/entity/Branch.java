@@ -2,10 +2,7 @@ package com.ruisu.sectorabackend.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.validator.constraints.Length;
 
 @Entity
@@ -14,6 +11,7 @@ import org.hibernate.validator.constraints.Length;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+//@ToString(exclude = "manager")
 public class Branch {
 
     @Id
@@ -37,7 +35,11 @@ public class Branch {
     @Length(min = 5, max = 100)
     private String address;
 
-    @OneToOne
+    @OneToOne(
+            cascade = CascadeType.PERSIST,
+            fetch = FetchType.EAGER //Lazy only bring branch, not manager
+
+    )
     @JoinColumn(
             name = "manager",
             referencedColumnName = "id"
