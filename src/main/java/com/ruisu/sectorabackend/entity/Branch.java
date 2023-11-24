@@ -17,7 +17,15 @@ import org.hibernate.validator.constraints.Length;
 public class Branch {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @SequenceGenerator(
+            name = "branch_sequence",
+            sequenceName = "branch_sequence",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            generator = "branch_sequence",
+            strategy = GenerationType.SEQUENCE
+    )
     private Long id;
 
     @NotBlank()
