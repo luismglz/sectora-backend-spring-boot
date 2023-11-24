@@ -36,4 +36,11 @@ public class Branch {
 
     @Length(min = 5, max = 100)
     private String address;
+
+    @OneToOne
+    @JoinColumn(
+            name = "manager",
+            referencedColumnName = "id"
+    )
+    private Manager manager;
 }
