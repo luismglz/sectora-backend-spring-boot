@@ -79,4 +79,28 @@ class CustomerRepositoryTest {
         List<Customer> customerList = customerRepository.findByAddress_City("New York City");
         System.out.println(customerList);
     }
+
+    @Test
+    public void getCustomerByEmail(){
+        Customer customer = customerRepository.getCustomerByEmail("cdubois@gmail.com");
+        System.out.println(customer);
+    }
+
+    @Test
+    public void getCustomerFirstNameByEmail(){
+        String firstName = customerRepository.getCustomerFirstNameByEmail("cdubois@gmail.com");
+        System.out.println(firstName);
+    }
+
+    @Test
+    public void getCustomerByEmailNative(){
+        Customer customer = customerRepository.getCustomerByEmailNative("cdubois@gmail.com");
+        System.out.println(customer);
+    }
+
+    @Test
+    public void  getCustomerByEmailNativeAndNamedParams(){
+        Customer customer = customerRepository.getCustomerByEmailNativeAndNamedParams("cdubois@gmail.com");
+        System.out.println(customer);
+    }
 }
