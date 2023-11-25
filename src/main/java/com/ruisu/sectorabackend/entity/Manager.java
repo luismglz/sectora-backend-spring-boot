@@ -26,4 +26,10 @@ public class Manager {
     private Long id;
     private String firstName;
     private String lastName;
+
+    @OneToOne(
+            mappedBy = "manager",
+            fetch = FetchType.EAGER
+    )
+    private Branch branch;
 }

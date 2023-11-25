@@ -11,7 +11,7 @@ import org.hibernate.validator.constraints.Length;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-//@ToString(exclude = "manager")
+@ToString(exclude = "manager")
 public class Branch {
 
     @Id
