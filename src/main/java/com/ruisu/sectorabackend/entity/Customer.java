@@ -30,7 +30,8 @@ public class Customer {
             generator = "customer_sequence",
             strategy = GenerationType.SEQUENCE
     )
-    private Long customerId;
+    @Column(name = "id_customer")
+    private Long id;
     private String firstName;
     private String lastName;
 

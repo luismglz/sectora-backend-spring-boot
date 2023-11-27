@@ -17,6 +17,9 @@ import java.util.List;
 public class Branch {
 
     @Id
+    @Column(
+            name = "id_branch"
+    )
     @SequenceGenerator(
             name = "branch_sequence",
             sequenceName = "branch_sequence",
@@ -44,9 +47,26 @@ public class Branch {
     )
     @JoinColumn(
             name = "fk_manager",
-            referencedColumnName = "id"
+            referencedColumnName = "id_manager"
     )
     private Manager manager;
+
+    @ManyToMany(
+            cascade = CascadeType.ALL,
+            fetch = FetchType.EAGER
+    )
+    @JoinTable(
+            name = "branch_customer",
+            joinColumns = @JoinColumn(
+                    name = "fk_branch",
+                    referencedColumnName = "id_branch"
+            ),
+            inverseJoinColumns = @JoinColumn(
+                    name = "fk_customer",
+                    referencedColumnName = "id_customer"
+            )
+    )
+    private List<Customer> customers;
 
     /*@OneToMany(
             cascade = CascadeType.ALL,
