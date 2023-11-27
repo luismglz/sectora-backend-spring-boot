@@ -5,6 +5,8 @@ import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 import org.hibernate.validator.constraints.Length;
 
+import java.util.List;
+
 @Entity
 @Table(name="branches")
 @Data
@@ -37,12 +39,22 @@ public class Branch {
 
     @OneToOne(
             cascade = CascadeType.PERSIST,
-            fetch = FetchType.EAGER //Lazy only bring branch, not manager
-
+            fetch = FetchType.EAGER, //Lazy only bring branch, not manager
+            optional = false
     )
     @JoinColumn(
             name = "manager",
             referencedColumnName = "id"
     )
     private Manager manager;
+
+    @OneToMany(
+            cascade = CascadeType.ALL,
+            fetch = FetchType.EAGER
+    )
+    @JoinColumn(
+            name="id",
+            referencedColumnName = "id"
+    )
+    private List<Order> orders;
 }
