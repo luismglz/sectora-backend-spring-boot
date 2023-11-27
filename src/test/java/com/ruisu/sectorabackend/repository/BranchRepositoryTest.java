@@ -86,7 +86,7 @@ class BranchRepositoryTest {
                 .address("Wing Kitchen Keikyu Kamata, 4-50-11 Kamata Ota-ku Tokyo, JAPAN, 150-0043")
                 .telephone("0570-085-735")
                 .manager(manager)
-                .orders(List.of(order1,order2))
+                //.orders(List.of(order1,order2))
                 .build();
 
         branchRepository.save(branch);

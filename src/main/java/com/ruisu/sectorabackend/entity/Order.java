@@ -27,4 +27,13 @@ public class Order {
     private Long Id;
     private String description;
     private double price;
+
+    @ManyToOne(
+            cascade = CascadeType.ALL
+    )
+    @JoinColumn(
+            name = "fk_branch",//name of branch id's new column into order table
+            referencedColumnName = "id"//add foreign key to make reference, in this case Branch ID(parent class)
+    )
+    private Branch branch;
 }

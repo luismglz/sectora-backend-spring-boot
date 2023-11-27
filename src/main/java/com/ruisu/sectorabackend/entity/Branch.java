@@ -43,12 +43,12 @@ public class Branch {
             optional = false
     )
     @JoinColumn(
-            name = "manager",
+            name = "fk_manager",
             referencedColumnName = "id"
     )
     private Manager manager;
 
-    @OneToMany(
+    /*@OneToMany(
             cascade = CascadeType.ALL,
             fetch = FetchType.EAGER
     )
@@ -56,5 +56,5 @@ public class Branch {
             name="id",
             referencedColumnName = "id"
     )
-    private List<Order> orders;
+    private List<Order> orders;*/
 }
