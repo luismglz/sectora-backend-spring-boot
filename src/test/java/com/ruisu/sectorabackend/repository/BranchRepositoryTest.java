@@ -1,11 +1,10 @@
 package com.ruisu.sectorabackend.repository;
 
 
-import com.ruisu.sectorabackend.entity.Branch;
-import com.ruisu.sectorabackend.entity.Manager;
-import com.ruisu.sectorabackend.entity.Order;
+import com.ruisu.sectorabackend.entity.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.aop.scope.ScopedProxyUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
@@ -97,6 +96,52 @@ class BranchRepositoryTest {
 
         List<Branch> branchList = branchRepository.findAll();
         System.out.println(branchList);
+    }
+
+    @Test
+    public void saveBranchWithCustomer(){
+        Manager manager = Manager.builder()
+                .firstName("Haruka")
+                .lastName("Sato")
+                .build();
+
+        Customer customer = Customer.builder()
+                .firstName("Haruka")
+                .lastName("Ishikawa")
+                .email("hish_1010@gmail.com")
+                .address(Address.builder()
+                        .country("JAPAN")
+                        .city("Tokyo")
+                        .addressLine("2 Chome-2-13 Yoyogi")
+                        .state("Tokyo")
+                        .postalCode("151-0053")
+                        .build())
+                .build();
+
+        Branch branch = Branch.builder()
+                .name("DOMISE Shibuya dogenzaka-dori")
+                .address("2-25-12 Dogenzaka Shibuya-ku Tokyo, JAPAN, 150-0043")
+                .telephone("0570-000-578")
+                .manager(manager)
+                .customers(List.of(customer))
+                .build();
+
+        branchRepository.save(branch);
+    }
+
+    @Test
+    public void findAllBranchesWithCustomers(){
+        List<Branch> branches = branchRepository.findAll();
+        System.out.println(branches);
+
+    }
+
+    @Test
+    public void findCustomersByBranch(){
+        Branch branch = branchRepository.findById(1L).get();
+        List<Customer> customers = branch.getCustomers();
+        System.out.println(customers);
+
     }
 
    /* @Test

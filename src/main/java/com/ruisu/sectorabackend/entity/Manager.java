@@ -23,6 +23,7 @@ public class Manager {
             generator = "manager_sequence",
             strategy = GenerationType.SEQUENCE
     )
+    @Column(name = "id_manager")
     private Long id;
     private String firstName;
     private String lastName;

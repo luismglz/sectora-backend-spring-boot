@@ -24,6 +24,7 @@ public class Order {
             generator = "order_sequence",
             strategy = GenerationType.SEQUENCE
     )
+    @Column(name = "id_order")
     private Long Id;
     private String description;
     private double price;
@@ -33,7 +34,7 @@ public class Order {
     )
     @JoinColumn(
             name = "fk_branch",//name of branch id's new column into order table
-            referencedColumnName = "id"//add foreign key to make reference, in this case Branch ID(parent class)
+            referencedColumnName = "id_branch"//add foreign key to make reference, in this case Branch ID(parent class)
     )
     private Branch branch;
 }
